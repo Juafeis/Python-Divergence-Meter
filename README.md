@@ -10,4 +10,4 @@ Using Raspberry, you'll need to connect your first Lixie like this:
 
 # First Steps
 
-I'm going to start by using ![Adafruit Neopixel](https://github.com/adafruit/Adafruit_CircuitPython_NeoPixel) libraries to start with this project
+I'm going to start by using ![Adafruit Neopixel](http://github.com/adafruit/Adafruit_CircuitPython_NeoPixel) libraries to start with this project
