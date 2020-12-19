@@ -17,15 +17,31 @@ class OrderedNeoPixel(neopixel.NeoPixel):
             if pixel != [0, 0, 0]:
                 self[i] = color
 
-    def update_time(self, time, color):
-        self.fill((0,0,0))
+    async def update_time(self, time, color):
         if len(time) != 6:
             raise Exception("Time must be composed by 6 numbers")
         
-        i = 0
-        for number in time:
-            self[int(number) + i] = color
-            i += 10
+        hours = time[:2]
+        minutes = time[2:4]
+        seconds = time[4:]
+    
+        digit = 0
+        for i, number in enumerate(time):
+            pos = int(number) + digit
+
+            if (int(number) == 0) :
+                if digit == 50 or digit == 30 or digit == 10 :
+                    self[pos + 9] = (0, 0, 0)
+                elif digit == 40 or digit == 20 :
+                    self[pos + 5] = (0, 0, 0)      
+
+            if hours == "00" and minutes == "00" and seconds == "00":
+                self[2] = (0, 0, 0)     
+                self[13] = (0,0,0)
+        
+            self[pos - 1] = (0, 0, 0)
+            self[pos] = color
+            digit += 10
 
 
 
